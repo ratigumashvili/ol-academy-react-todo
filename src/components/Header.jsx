@@ -2,21 +2,21 @@ import React from "react";
 
 class Header extends React.Component {
   render() {
-    const { deleteAll, deleteComplete, todos } = this.props;
-    const completed = todos.filter((item) => item.isComplete === true);
+    const { deleteAll, deleteComplete, todos, title } = this.props;
+    const completed = todos.filter((item) => item.isComplete);
     return (
       <div className="header">
-        <h1>{this.props.title}</h1>
+        <h1>{title}</h1>
         <div className="header-controls">
           <button
-            disabled={todos.length !== 0 ? false : true}
+            disabled={!todos.length}
             onClick={deleteAll}
             title="Delete all items"
           >
             Delete All
           </button>
           <button
-            disabled={completed.length !== 0 ? false : true}
+            disabled={!completed.length}
             onClick={deleteComplete}
             title="Delete completed items"
           >

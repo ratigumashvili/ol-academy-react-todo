@@ -1,7 +1,7 @@
 import React from "react";
 import { HiPlusSm } from "react-icons/hi";
 
-class Form extends React.Component {
+class AddTodoForm extends React.Component {
   render() {
     const { addTodo, todo, handleChangeInput } = this.props;
     return (
@@ -20,4 +20,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default AddTodoForm;

@@ -16,8 +16,7 @@ class TodoItem extends React.Component {
       handleComplete,
       handleOpenEditMenu,
       handleMove,
-      up,
-      down,
+      MOVEMENTS,
       showControls,
     } = this.props;
 
@@ -49,11 +48,14 @@ class TodoItem extends React.Component {
                 <button onClick={() => handleOpenEditMenu(item)} title="Edit">
                   <HiOutlinePencilAlt size={18} />
                 </button>
-                <button onClick={() => handleMove(item.id, up)} title="Move up">
+                <button
+                  onClick={(e) => handleMove(item.id, MOVEMENTS.UP, e)}
+                  title="Move up"
+                >
                   <HiChevronUp size={18} />
                 </button>
                 <button
-                  onClick={() => handleMove(item.id, down)}
+                  onClick={(e) => handleMove(item.id, MOVEMENTS.DOWN, e)}
                   title="Move down"
                 >
                   <HiChevronDown size={18} />
