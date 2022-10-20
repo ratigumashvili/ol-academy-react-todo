@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  width: 100vw;
+  height: 100vh;
+  padding-top: 6rem;
+  background-color: #f2f2f2;
+}
+
+.app {
+  width: 100%;
+  max-width: 550px;
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 15px;
+  border: solid 1px black;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.error {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: dashed 1px black;
+}
+
+.error .icon {
+  margin-right: 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header-controls button {
+  border: unset;
+  background: unset;
+  margin-left: 15px;
+  padding: 15px 10px;
+  border: solid 1px black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.header-controls button:hover {
+  background-color: black;
+  color: white;
+}
+
+.header-controls button:disabled {
+  background-color: inherit;
+  color: inherit;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.add-form,
+.edit-menu {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.add-form input,
+.edit-menu input {
+  border: unset;
+  width: 100%;
+  height: 50px;
+  padding: 15px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: solid 1px black;
+  font-size: 1rem;
+}
+
+.add-form input:focus,
+.edit-menu input:focus {
+  outline: none;
+}
+
+.add-form button,
+.edit-menu button {
+  border: unset;
+  background: unset;
+  width: 90px;
+  height: 50px;
+  background-color: black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.todo-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.todo-list-item__item {
+  margin-bottom: 1rem;
+}
+.list-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.list-item label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-item label:hover {
+  cursor: pointer;
+}
+
+.complete-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.mark {
+  text-decoration: line-through;
+}
+
+.list-item span {
+  flex: 1;
+  font-size: 1.2rem;
+}
+.list-item__controls button {
+  margin-left: 10px;
+  border: unset;
+  background: unset;
+  border: solid 1px black;
+  padding: 5px 8px;
+  border-radius: 5px;
+  transition: all 0.25s ease;
+}
+
+.list-item__controls button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
