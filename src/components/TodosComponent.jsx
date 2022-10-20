@@ -58,17 +58,19 @@ class TodosComponent extends React.Component {
         this.setState({
           errorMsg: "Item with such title already registered",
         });
-      } else if (todo.length === 0) {
+        return;
+      }
+      if (todo.length === 0) {
         this.setState({
           errorMsg: "Input field must not be empty",
         });
-      } else {
-        this.setState({
-          todos: [...todos, newTodo],
-          todo: "",
-          errorMsg: "",
-        });
+        return;
       }
+      this.setState({
+        todos: [...todos, newTodo],
+        todo: "",
+        errorMsg: "",
+      });
     };
 
     const handleDelete = (id) => {
