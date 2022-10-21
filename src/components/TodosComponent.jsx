@@ -21,7 +21,6 @@ class TodosComponent extends React.Component {
       errorMsg: "",
       grabedId: "",
       showControls: true,
-      btnDisabled: false,
     };
   }
 
@@ -52,6 +51,7 @@ class TodosComponent extends React.Component {
         id: Date.now(),
         title: todo.trim(),
         isComplete: false,
+        isChecked: false,
       };
 
       if (checkTitle(newTodo.title)) {
@@ -78,6 +78,16 @@ class TodosComponent extends React.Component {
         todos: todos.filter((item) => item.id !== id),
         showEditMenu: false,
       });
+    };
+
+    const handleCheck = (id) => {
+      const updatedList = todos.map((item) => {
+        if (item.id === id) {
+          item.isChecked = !item.isChecked;
+        }
+        return item;
+      });
+      this.setState({ todos: updatedList });
     };
 
     const handleComplete = (id) => {
@@ -149,12 +159,17 @@ class TodosComponent extends React.Component {
       this.setState({ todos: todos.filter((item) => !item.isComplete) });
     };
 
+    const deleteChecked = () => {
+      this.setState({ todos: todos.filter((item) => !item.isChecked) });
+    };
+
     return (
       <>
         <Header
           title="Todos"
           deleteAll={deleteAll}
           deleteComplete={deleteComplete}
+          deleteChecked={deleteChecked}
           todos={todos}
         />
         {errorMsg !== "" && <ErrorNotification errorMsg={errorMsg} />}
@@ -169,6 +184,7 @@ class TodosComponent extends React.Component {
               key={item.id}
               item={item}
               handleDelete={handleDelete}
+              handleCheck={handleCheck}
               handleComplete={handleComplete}
               handleOpenEditMenu={handleOpenEditMenu}
               handleMove={handleMove}

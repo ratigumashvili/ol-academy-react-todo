@@ -2,8 +2,10 @@ import React from "react";
 
 class Header extends React.Component {
   render() {
-    const { deleteAll, deleteComplete, todos, title } = this.props;
+    const { deleteAll, deleteComplete, deleteChecked, todos, title } =
+      this.props;
     const completed = todos.filter((item) => item.isComplete);
+    const checked = todos.filter((item) => item.isChecked);
     return (
       <div className="header">
         <h1>{title}</h1>
@@ -21,6 +23,13 @@ class Header extends React.Component {
             title="Delete completed items"
           >
             Delete Completed
+          </button>
+          <button
+            disabled={!checked.length}
+            onClick={deleteChecked}
+            title="Delete checked items"
+          >
+            Delete checked
           </button>
         </div>
       </div>

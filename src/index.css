@@ -118,6 +118,9 @@ body {
 .todo-list-item__item {
   margin-bottom: 1rem;
 }
+.todo-list-item__item span {
+  cursor: pointer;
+}
 .list-item {
   width: 100%;
   display: flex;

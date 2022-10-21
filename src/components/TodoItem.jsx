@@ -14,6 +14,7 @@ class TodoItem extends React.Component {
       item,
       handleDelete,
       handleComplete,
+      handleCheck,
       handleOpenEditMenu,
       handleMove,
       MOVEMENTS,
@@ -25,7 +26,7 @@ class TodoItem extends React.Component {
         <li className="todo-list-item__item">
           <div className="list-item">
             <label htmlFor={item.id}>
-              {item.isComplete === true ? (
+              {item.isChecked === true ? (
                 <HiCheckCircle className="complete-icon" />
               ) : (
                 <HiPlusCircle className="complete-icon" />
@@ -34,10 +35,13 @@ class TodoItem extends React.Component {
             <input
               type="checkbox"
               id={item.id}
-              onChange={() => handleComplete(item.id)}
+              onChange={() => handleCheck(item.id)}
               style={{ display: "none" }}
             />
-            <span className={`${item.isComplete === true && "mark"}`}>
+            <span
+              className={`${item.isComplete === true && "mark"}`}
+              onClick={() => handleComplete(item.id)}
+            >
               {item.title}
             </span>
             {showControls && (
@@ -49,13 +53,13 @@ class TodoItem extends React.Component {
                   <HiOutlinePencilAlt size={18} />
                 </button>
                 <button
-                  onClick={(e) => handleMove(item.id, MOVEMENTS.UP, e)}
+                  onClick={() => handleMove(item.id, MOVEMENTS.UP)}
                   title="Move up"
                 >
                   <HiChevronUp size={18} />
                 </button>
                 <button
-                  onClick={(e) => handleMove(item.id, MOVEMENTS.DOWN, e)}
+                  onClick={() => handleMove(item.id, MOVEMENTS.DOWN)}
                   title="Move down"
                 >
                   <HiChevronDown size={18} />
