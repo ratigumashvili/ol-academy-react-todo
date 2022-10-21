@@ -150,22 +150,22 @@ class TodosComponent extends React.Component {
       this.setState({ todos: [] });
     };
 
-    const deleteComplete = () => {
-      this.setState({ todos: todos.filter((item) => !item.isComplete) });
-    };
-
-    const deleteChecked = () => {
-      this.setState({ todos: todos.filter((item) => !item.isChecked) });
+    const deleteMarkedItems = (value) => {
+      if (value === "deleteComplete") {
+        this.setState({ todos: todos.filter((item) => !item.isComplete) });
+      }
+      if (value === "deleteChecked") {
+        this.setState({ todos: todos.filter((item) => !item.isChecked) });
+      }
     };
 
     return (
       <>
         <Header
           title="Todos"
-          deleteAll={deleteAll}
-          deleteComplete={deleteComplete}
-          deleteChecked={deleteChecked}
           todos={todos}
+          deleteAll={deleteAll}
+          deleteMarkedItems={deleteMarkedItems}
         />
         {errorMsg !== "" && <ErrorNotification errorMsg={errorMsg} />}
         <AddTodoForm

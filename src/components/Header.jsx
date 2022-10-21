@@ -2,8 +2,7 @@ import React from "react";
 
 class Header extends React.Component {
   render() {
-    const { deleteAll, deleteComplete, deleteChecked, todos, title } =
-      this.props;
+    const { deleteAll, deleteMarkedItems, todos, title } = this.props;
     const completed = todos.filter((item) => item.isComplete);
     const checked = todos.filter((item) => item.isChecked);
     return (
@@ -19,14 +18,14 @@ class Header extends React.Component {
           </button>
           <button
             disabled={!completed.length}
-            onClick={deleteComplete}
+            onClick={() => deleteMarkedItems("deleteComplete")}
             title="Delete completed items"
           >
             Delete Completed
           </button>
           <button
             disabled={!checked.length}
-            onClick={deleteChecked}
+            onClick={() => deleteMarkedItems("deleteChecked")}
             title="Delete checked items"
           >
             Delete checked
