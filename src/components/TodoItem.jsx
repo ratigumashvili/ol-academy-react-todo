@@ -13,12 +13,11 @@ class TodoItem extends React.Component {
     const {
       item,
       handleDelete,
-      handleComplete,
-      handleCheck,
       handleOpenEditMenu,
       handleMove,
       MOVEMENTS,
       showControls,
+      handleMarkItem,
     } = this.props;
 
     return (
@@ -35,12 +34,12 @@ class TodoItem extends React.Component {
             <input
               type="checkbox"
               id={item.id}
-              onChange={() => handleCheck(item.id)}
+              onChange={() => handleMarkItem(item.id, "isChecked")}
               style={{ display: "none" }}
             />
             <span
               className={`${item.isComplete === true && "mark"}`}
-              onClick={() => handleComplete(item.id)}
+              onClick={() => handleMarkItem(item.id, "isComplete")}
             >
               {item.title}
             </span>

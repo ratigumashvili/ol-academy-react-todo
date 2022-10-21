@@ -80,20 +80,15 @@ class TodosComponent extends React.Component {
       });
     };
 
-    const handleCheck = (id) => {
+    const handleMarkItem = (id, param) => {
       const updatedList = todos.map((item) => {
         if (item.id === id) {
-          item.isChecked = !item.isChecked;
-        }
-        return item;
-      });
-      this.setState({ todos: updatedList });
-    };
-
-    const handleComplete = (id) => {
-      const updatedList = todos.map((item) => {
-        if (item.id === id) {
-          item.isComplete = !item.isComplete;
+          if (param === "isChecked") {
+            item.isChecked = !item.isChecked;
+          }
+          if (param === "isComplete") {
+            item.isComplete = !item.isComplete;
+          }
         }
         return item;
       });
@@ -184,12 +179,11 @@ class TodosComponent extends React.Component {
               key={item.id}
               item={item}
               handleDelete={handleDelete}
-              handleCheck={handleCheck}
-              handleComplete={handleComplete}
               handleOpenEditMenu={handleOpenEditMenu}
               handleMove={handleMove}
               MOVEMENTS={MOVEMENTS}
               showControls={showControls}
+              handleMarkItem={handleMarkItem}
             />
           ))}
         </ul>
