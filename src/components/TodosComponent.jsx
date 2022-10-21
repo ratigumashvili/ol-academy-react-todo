@@ -151,12 +151,11 @@ class TodosComponent extends React.Component {
     };
 
     const deleteMarkedItems = (value) => {
-      if (value === "deleteComplete") {
+      value === "deleteComplete" &&
         this.setState({ todos: todos.filter((item) => !item.isComplete) });
-      }
-      if (value === "deleteChecked") {
+
+      value === "deleteChecked" &&
         this.setState({ todos: todos.filter((item) => !item.isChecked) });
-      }
     };
 
     return (
