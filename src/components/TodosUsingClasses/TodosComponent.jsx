@@ -1,8 +1,8 @@
 import React from "react";
 import AddTodoForm from "./AddTodoForm";
-import TodoItem from "../components/TodoItem";
-import Header from "../components/Header";
-import ErrorNotification from "../components/ErrorNotification";
+import TodoItem from "./TodoItem";
+import Header from "./Header";
+import ErrorNotification from "./ErrorNotification";
 import Edit from "./Edit";
 
 const MOVEMENTS = {
@@ -77,6 +77,7 @@ class TodosComponent extends React.Component {
       this.setState({
         todos: todos.filter((item) => item.id !== id),
         showEditMenu: false,
+        errorMsg: "",
       });
     };
 
@@ -130,7 +131,7 @@ class TodosComponent extends React.Component {
     };
 
     const handleMove = (id, direction) => {
-      const position = todos.findIndex((i) => i.id === id);
+      const position = todos.findIndex((item) => item.id === id);
 
       if (
         (direction === MOVEMENTS.UP && position === 0) ||
@@ -138,9 +139,8 @@ class TodosComponent extends React.Component {
       ) {
         return;
       }
-
       const item = todos[position];
-      const reordered = todos.filter((i) => i.id !== id);
+      const reordered = todos.filter((item) => item.id !== id);
       reordered.splice(position + direction, 0, item);
 
       this.setState({ todos: reordered });
@@ -150,11 +150,11 @@ class TodosComponent extends React.Component {
       this.setState({ todos: [] });
     };
 
-    const deleteMarkedItems = (value) => {
-      value === "deleteComplete" &&
+    const deleteMarkedItems = (param) => {
+      param === "deleteComplete" &&
         this.setState({ todos: todos.filter((item) => !item.isComplete) });
 
-      value === "deleteChecked" &&
+      param === "deleteChecked" &&
         this.setState({ todos: todos.filter((item) => !item.isChecked) });
     };
 
