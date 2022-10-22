@@ -63,6 +63,7 @@ const Todos = () => {
     const updatedList = todos.filter((item) => item.id !== currentId);
     setTodos(updatedList);
     setErrMsg("");
+    setShowEditMenu(false);
   };
 
   const handleMoveItem = (id, direction) => {
