@@ -60,8 +60,7 @@ const Todos = () => {
   };
 
   const handleDeleteItem = (currentId) => {
-    const updatedList = todos.filter((item) => item.id !== currentId);
-    setTodos(updatedList);
+    setTodos(todos.filter((item) => currentId !== item.id));
     setErrMsg("");
     setShowEditMenu(false);
   };
